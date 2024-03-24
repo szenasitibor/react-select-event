@@ -36,11 +36,13 @@ const type = (input: HTMLElement, text: string) => {
 
 // press the "clear" button, and reset various states
 const clear = async (input: HTMLElement, clearButton: Element) => {
-  await act(async () => {
+  act( () => {
     fireEvent.mouseDown(clearButton);
     fireEvent.click(clearButton);
-    // react-select will prevent the menu from opening, and asynchronously focus the select field...
-    await waitFor(() => {});
+  });
+  // react-select will prevent the menu from opening, and asynchronously focus the select field...
+  await waitFor(() => {});
+  act( () => {
     input.blur();
   });
 };
